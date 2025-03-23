@@ -1,0 +1,75 @@
+@layer components {
+	.btn {
+		--color: var(--color-on-body);
+		--on-color: var(--color-body);
+
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: --spacing(2);
+		white-space: nowrap;
+		border-radius: var(--radius-default);
+		font-size: var(--text-sm);
+		line-height: var(--text-sm--line-height);
+		font-weight: var(--font-weight-medium);
+		border: 1px solid transparent;
+		@apply transition-all;
+
+		@variant focus-visible {
+			--tw-ring-color: var(--color-input);
+			@apply ring-3 outline-hidden;
+		}
+
+		@variant disabled {
+			opacity: 50%;
+			pointer-events: none;
+		}
+	}
+
+	.btn--md,
+	.btn:not(.btn--sm, .btn--lg) {
+		height: --spacing(9);
+		padding-inline: --spacing(4);
+		padding-block: --spacing(2);
+
+		@variant has-[>svg] {
+			padding-inline: --spacing(3);
+		}
+	}
+
+	.btn--solid,
+	.btn:not(.btn--outline, .btn--ghost) {
+		background-color: var(--color);
+		color: var(--on-color);
+
+		@variant hover {
+			background-color: color-mix(
+				in oklab,
+				var(--color) 90%,
+				transparent
+			);
+		}
+	}
+
+	.btn--outline {
+		border-color: var(--color);
+		color: var(--color);
+
+		@variant hover {
+			background-color: color-mix(in oklab, var(--color) 6%, transparent);
+		}
+	}
+
+	.btn--ghost {
+		color: var(--color);
+
+		@variant hover {
+			background-color: color-mix(in oklab, var(--color) 8%, transparent);
+		}
+	}
+
+	.btn--primary {
+		--color: var(--color-primary);
+		--on-color: var(--color-on-primary);
+	}
+}

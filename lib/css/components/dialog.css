@@ -1,0 +1,153 @@
+@layer components {
+	.dialog::backdrop {
+		opacity: 0;
+	}
+
+	.dialog__overlay {
+		position: fixed;
+		inset: 0;
+		background-color: color-mix(
+			in oklab,
+			var(--color-black) 50%,
+			transparent
+		);
+	}
+
+	.dialog__content {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		flex-direction: column;
+		gap: --spacing(4);
+		padding-block: --spacing(5);
+		background-color: var(--color-body);
+		color: var(--color-on-body);
+		border-width: 1px;
+		border-radius: var(--radius-default);
+		box-shadow: var(--shadow-sm);
+		width: calc(100% - 2rem);
+
+		@variant sm {
+			width: 100%;
+			max-width: var(--container-lg);
+		}
+	}
+
+	.dialog__header {
+		display: flex;
+		flex-direction: column;
+		gap: --spacing(1.5);
+		text-align: center;
+		padding-inline: --spacing(5);
+
+		@variant sm {
+			text-align: left;
+		}
+	}
+
+	.dialog__title {
+		font-weight: var(--font-weight-semibold);
+		font-size: var(--text-lg);
+		line-height: 1;
+	}
+
+	.dialog__description {
+		color: var(--color-muted);
+		font-size: var(--text-sm);
+		line-height: var(--text-sm--line-height);
+	}
+
+	.dialog__body {
+		padding-inline: --spacing(5);
+	}
+
+	.dialog__footer {
+		margin-top: auto;
+		display: flex;
+		flex-direction: column-reverse;
+		gap: --spacing(2);
+		padding-inline: --spacing(5);
+
+		@variant sm {
+			flex-direction: row;
+			justify-content: flex-end;
+		}
+	}
+
+	.dialog__menu {
+		display: flex;
+		flex-direction: column;
+		gap: --spacing(1);
+	}
+
+	.dialog__menu-item {
+		--color: var(--color-on-body);
+		display: inline-flex;
+		align-items: center;
+		padding-inline: --spacing(5);
+		padding-block: --spacing(4);
+		text-align: left;
+		color: var(--color);
+		border-radius: var(--radius-default);
+		font-weight: var(--font-weight-medium);
+
+		@variant hover {
+			background-color: color-mix(in oklab, var(--color) 8%, transparent);
+		}
+
+		@variant active {
+			background-color: color-mix(in oklab, var(--color) 8%, transparent);
+		}
+
+		@variant focus {
+			background-color: color-mix(in oklab, var(--color) 8%, transparent);
+			@apply outline-hidden;
+		}
+
+		@media (hover: hover) {
+			@apply transition-colors;
+		}
+	}
+
+	.dialog.--enter .dialog__overlay {
+		@apply transition-opacity;
+		opacity: 0;
+	}
+
+	.dialog.--entering .dialog__overlay {
+		opacity: 100;
+	}
+
+	.dialog.--exit .dialog__overlay {
+		@apply transition-opacity;
+		opacity: 100;
+	}
+
+	.dialog.--exiting .dialog__overlay {
+		opacity: 0;
+	}
+
+	.dialog.--enter .dialog__content {
+		@apply transition-[opacity,transform];
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0.95);
+	}
+
+	.dialog.--entering .dialog__content {
+		opacity: 100;
+		transform: translate(-50%, -50%) scale(1);
+	}
+
+	.dialog.--exit .dialog__content {
+		@apply transition-[opacity,transform];
+		opacity: 100;
+		transform: translate(-50%, -50%) scale(1);
+	}
+
+	.dialog.--exiting .dialog__content {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0.95);
+	}
+}

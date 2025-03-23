@@ -1,0 +1,181 @@
+@layer components {
+	.form {
+		display: flex;
+		flex-direction: column;
+		gap: --spacing(5);
+	}
+
+	.form__content {
+		display: flex;
+		flex-direction: column;
+		gap: --spacing(4);
+	}
+
+	.form__action {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: --spacing(3);
+	}
+
+	.form__field {
+		display: flex;
+		flex-direction: column;
+		gap: --spacing(1.5);
+	}
+
+	.form__message {
+		font-size: var(--text-xs);
+		line-height: var(--text-xs--line-height);
+		color: var(--color-error);
+		font-weight: var(--font-weight-medium);
+	}
+
+	.input {
+		display: flex;
+		height: --spacing(9);
+		width: 100%;
+		min-width: 0;
+		padding-inline: --spacing(3);
+		padding-block: --spacing(1);
+		background-color: transparent;
+		border: 1px solid var(--color-input);
+		border-radius: var(--radius-default);
+		border-color: var(--color-input);
+		outline-style: none;
+		box-shadow: var(--shadow-xs);
+		--tw-ring-color: color-mix(
+			in oklab,
+			var(--color-primary) 50%,
+			transparent
+		);
+		@apply transition-[color,box-shadow];
+
+		@variant file {
+			color: var(--color-on-body);
+			display: inline-flex;
+			height: --spacing(7);
+			border-width: 0;
+			background-color: transparent;
+			font-size: var(--text-sm);
+			line-height: var(--text-sm--line-height);
+			font-weight: var(--font-weight-medium);
+		}
+
+		@variant placeholder {
+			color: var(--color-muted);
+		}
+
+		@variant selection {
+			background-color: var(--color-primary);
+			color: var(--color-on-primary);
+		}
+
+		@variant focus-visible {
+			border-color: var(--color-primary);
+			@apply ring-2;
+		}
+
+		@variant aria-invalid {
+			border-color: var(--color-error);
+			--tw-ring-color: color-mix(
+				in oklab,
+				var(--color-error) 50%,
+				transparent
+			);
+		}
+
+		@variant disabled {
+			pointer-events: none;
+			cursor: not-allowed;
+			opacity: 50%;
+		}
+
+		@variant md {
+			font-size: var(--text-sm);
+			line-height: var(--text-sm--line-height);
+		}
+	}
+
+	.label {
+		display: flex;
+		align-items: center;
+		gap: --spacing(2);
+		font-size: var(--text-sm);
+		line-height: 1;
+		font-weight: var(--font-weight-medium);
+		-webkit-user-select: none;
+		user-select: none;
+
+		@variant peer-disabled {
+			cursor: not-allowed;
+			opacity: 50%;
+		}
+	}
+
+	.textarea {
+		display: flex;
+		field-sizing: content;
+		min-height: --spacing(16);
+		width: 100%;
+		border-radius: var(--radius-default);
+		border-width: 1px;
+		border-color: var(--color-input);
+		background-color: transparent;
+		padding-inline: --spacing(3);
+		padding-block: --spacing(2);
+		font-size: var(--text-base);
+		line-height: var(--text-base--line-height);
+		outline-style: none;
+		box-shadow: var(--shadow-xs);
+		@apply transition-[color,box-shadow];
+
+		@variant placeholder {
+			color: var(--color-muted);
+		}
+		@variant focus-visible {
+			border-color: var(--color-primary);
+			--tw-ring-color: color-mix(
+				in oklab,
+				var(--color-primary) 50%,
+				transparent
+			);
+			@apply ring-2;
+		}
+
+		@variant disabled {
+			cursor: not-allowed;
+			opacity: 50%;
+		}
+
+		@variant aria-invalid {
+			border-color: var(--color-error);
+			--tw-ring-color: color-mix(
+				in oklab,
+				var(--color-error) 20%,
+				transparent
+			);
+		}
+
+		@variant md {
+			font-size: var(--text-sm);
+			line-height: var(--text-sm--line-height);
+		}
+
+		@variant dark {
+			background-color: color-mix(
+				in oklab,
+				var(--color-input) 30%,
+				transparent
+			);
+
+			@variant aria-invalid {
+				--tw-ring-color: color-mix(
+					in oklab,
+					var(--color-error) 40%,
+					transparent
+				);
+			}
+		}
+	}
+}

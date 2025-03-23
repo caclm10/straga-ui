@@ -1,0 +1,33 @@
+{
+	"name": "straga-ui",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/straga-ui.umd.cjs",
+	"module": "./dist/straga-ui.js",
+	"exports": {
+		".": {
+			"import": "./dist/straga-ui.js",
+			"require": "./dist/straga-ui.umd.cjs"
+		},
+		"./main.css": "./dist/straga-ui.css"
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.0.15",
+		"@types/node": "^22.13.11",
+		"prettier": "^3.5.3",
+		"prettier-plugin-organize-imports": "^4.1.0",
+		"prettier-plugin-tailwindcss": "^0.6.11",
+		"tailwindcss": "^4.0.15",
+		"typescript": "~5.7.2",
+		"vite": "^6.2.0"
+	}
+}

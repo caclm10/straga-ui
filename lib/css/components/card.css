@@ -1,0 +1,15 @@
+@layer components {
+	.card {
+		background-color: var(--color-card);
+		border-width: 1px;
+		border-radius: var(--radius-default);
+		box-shadow: var(--shadow-xs);
+	}
+
+	.card__content {
+		display: flex;
+		flex-direction: column;
+		gap: --spacing(4);
+		padding: --spacing(6);
+	}
+}
