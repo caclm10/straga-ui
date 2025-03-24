@@ -9,7 +9,7 @@ export default defineConfig({
 	plugins: [tailwindcss()],
 	build: {
 		lib: {
-			entry: resolve(__dirname, "lib/main.ts"),
+			entry: resolve(__dirname, "src/main.ts"),
 			name: "StragaUI",
 			// the proper extensions will be added
 			fileName: "straga-ui",
